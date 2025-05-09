@@ -32,5 +32,5 @@ app.use('/api', enrollmentRouter);
 app.use('/api/admin', adminRouter);
 
 app.listen(PORT, () => {
-  console.log(`✅ Сервер запущен на http://localhost:${PORT}`);
+  console.log(`Сервер запущен на http://localhost:${PORT}`);
 });
