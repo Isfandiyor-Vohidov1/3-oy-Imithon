@@ -1,0 +1,49 @@
+--------------------------------------------------- # 1. Регистрация студента ---------------------------------------------------
+POST http://localhost:5000/api/students/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "John Doe",
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+--------------------------------------------------- # 2. Логин студента (получить токен) ---------------------------------------------------
+
+POST http://localhost:5000/api/students/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+---------------------------------------------------# 3. Создать курс (только для админа) ---------------------------------------------------
+POST http://localhost:5000/api/courses
+Content-Type: application/json
+Authorization: Bearer <your_jwt_token>
+
+{
+  "title": "JavaScript с нуля",
+  "description": "Полный курс по JavaScript",
+  "price": 99,
+  "category": "IT",
+  "author": "Alex Smith"
+}
+
+--------------------------------------------------- # 4. Получить список курсов с фильтром ---------------------------------------------------
+GET http://localhost:5000/api/courses?category=IT&price_lte=100
+Authorization: Bearer <your_jwt_token>
+
+--------------------------------------------------- # 5. Запись на курс ---------------------------------------------------
+POST http://localhost:5000/api/enroll
+Content-Type: application/json
+Authorization: Bearer <your_jwt_token>
+
+{
+  "courseId": "<valid_course_id>"
+}
+
+--------------------------------------------------- # 6. Получить статистику (только для админа) ---------------------------------------------------
+GET http://localhost:5000/api/admin/stats
+Authorization: Bearer <your_jwt_token>
